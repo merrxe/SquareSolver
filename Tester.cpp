@@ -1,7 +1,7 @@
 #include <TXLib.h>
 #include <math.h>
 #include "Tester.h"
-#include "SquarSolver.h"
+#include "SquareSolver.h"
 
 int OneTest (double a, double b, double c, roots nRoots_ref, double x1_ref, double x2_ref);
 
