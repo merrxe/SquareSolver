@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 #include "Tester.h"
-#include "SquarSolver.h"
+#include "SquareSolver.h"
 
 const double eps = 1e-7;
 
