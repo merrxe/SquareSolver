@@ -6,6 +6,17 @@
 
 #include "SquareCommandsRun.h"
 
+//????????????????????????????????????????????????---------------------
+//! Check if user called any ./start.exe commands
+//!
+//! @param [in]   argc   The number of arguments
+//! @param [in]   argv   The list of arguments
+//! @param [in]   color  Text color
+//!
+//! @return True or false (1 or 0)
+//!
+//! @note There are only two ./start.exe commands: --help and --color
+//????????????????????????????????????????????????---------------------
 int CommandsCalled (int argc, char *argv[], colors *color)
     {
     if (argc < 2)
@@ -23,7 +34,7 @@ int CommandsCalled (int argc, char *argv[], colors *color)
         return 1;
         }
 
-    /*ÏÐÎÃÐÀÌÌÀ: ÌÅÍßÅÒ ÖÂÅÒ ÒÅÊÑÒÀ*/
+    /*ÊÎÌÀÍÄÀ: ÌÅÍßÅÒ ÖÂÅÒ ÒÅÊÑÒÀ*/
     else if (!strcmp (argv[1], "--color"))
         {
         if (argc == 2)
@@ -67,5 +78,3 @@ int CommandsCalled (int argc, char *argv[], colors *color)
         }
     return 0;
     }
-
-//colors ColorChoice ()
