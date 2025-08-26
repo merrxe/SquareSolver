@@ -5,11 +5,11 @@
 
 #include "SquareInput.h"
 
-void Input (double *a, double *b, double *c)
+void Input (double *a, double *b, double *c, colors color)
     {
     assert (a && b && c);
 
-    printf ("Введите коэффициенты квадратного уравнения через пробел: ");
+    printf ("\033[%dm Введите коэффициенты a, b, c квадратного уравнения: ", color);
 
     while (scanf ("%lf %lf %lf", a, b, c) != 3)
         {
@@ -20,5 +20,5 @@ void Input (double *a, double *b, double *c)
 void ClearInputBuffer ()
     {
     while (getchar() != '\n'){}
-    printf("\n Убедитесь, что введёные данные корректны.\n");
+    printf("\n Убедитесь, что введённые данные корректны.\n");
     }

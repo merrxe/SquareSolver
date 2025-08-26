@@ -9,7 +9,7 @@ void Output (roots nRoots, double x1, double x2)
     {
     switch (nRoots)
         {
-        case NO_REAL_SOLUTION:  printf("\nУравнение не имеет действительных корней.");
+        case NO_REAL_SOLUTION:  printf("\nУравнение не имеет действительных решений.");
                                 break;
 
 
@@ -19,17 +19,17 @@ void Output (roots nRoots, double x1, double x2)
 
 
 
-        case ONE_ROOT:          printf("\nУравнение имеет один действительный корень: х = %.2f.", x1);
+        case ONE_ROOT:          printf("\nУравнение имеет один корень: х = %.2f.", x1);
                                 break;
 
 
 
-        case TWO_ROOTS:         printf("\nУравнение имеет два действительных корня: х1 = %.2f и x2 = %.2f.", x1, x2);
+        case TWO_ROOTS:         printf("\nУравнение имеет два корня: х1 = %.2f и x2 = %.2f.", x1, x2);
                                 break;
 
 
 
-        case INFINITE_ROOTS:    printf("\nУравнение имеет бесконечно много решений.");
+        case INFINITE_ROOTS:    printf("\nУравнение имеет бесконечное количество корней.");
                                 break;
 
 
