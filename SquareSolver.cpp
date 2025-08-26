@@ -3,8 +3,9 @@
 #include <assert.h>
 #include <stdlib.h>
 
-#include "Tester.h"
+#include "SquareTester.h"
 #include "SquareSolver.h"
+#include "SquareCommandsRun.h"
 
 const double eps = 1e-7;
 
@@ -15,30 +16,32 @@ roots LinearSolve (double b, double c, double *x1, double *x2);
 
 void ClearInputBuffer ();
 
-int main (void)
+int main (int argc, char *argv[])
     {
-    /*UNIT-реярш*/
-    int failed = nFailed();
-    if (failed != 0)
+    if (!CommandsCalled (argv))
         {
-        printf("FAILED: %d", failed);
+        /*UNIT-реярш*/
+        int failed = nFailed();
+        if (failed != 0)
+            {
+            printf("FAILED: %d", failed);
+            }
         }
 
-    /*оепелеммше*/
-    double a, b, c, x1, x2;
-    a = b = c = 0;
-    x1 = x2 = 0;
+        /*оепелеммше*/
+        double a, b, c, x1, x2;
+        a = b = c = 0;
+        x1 = x2 = NAN;
 
-    /*ббнд дюммшу*/
-    Input(&a, &b, &c);
+        /*ббнд дюммшу*/
+        Input(&a, &b, &c);
 
-    /*бшбнд йнпмеи*/
-    roots nRoots = SquareSolve (a, b, c, &x1, &x2);
-    Output(nRoots, x1, x2);
+        /*бшбнд йнпмеи*/
+        roots nRoots = SquareSolve (a, b, c, &x1, &x2);
+        Output(nRoots, x1, x2);
 
-    return 0;
+        return 0;
     }
-
 
 void Input (double *a, double *b, double *c)
     {
@@ -51,7 +54,6 @@ void Input (double *a, double *b, double *c)
         ClearInputBuffer ();
         }
     }
-
 
 void Output (roots nRoots, double x1, double x2)
     {
@@ -87,9 +89,6 @@ void Output (roots nRoots, double x1, double x2)
         }
     }
 
-
-
-
 roots SquareSolve (double a, double b, double c, double *x1, double *x2)
     {
     assert (x1 && x2);
@@ -115,7 +114,6 @@ roots SquareSolve (double a, double b, double c, double *x1, double *x2)
                 return TWO_ROOTS;
                 }
             }
-
 
         else /*    СПЮБМЕМХЕ БХДЮ ax^2 + bx + c= 0     */
             {
@@ -144,7 +142,6 @@ roots SquareSolve (double a, double b, double c, double *x1, double *x2)
         }
     }
 
-
 roots LinearSolve (double b, double c, double *x1, double *x2)
     {
     assert (x1 && x2);
@@ -167,9 +164,6 @@ roots LinearSolve (double b, double c, double *x1, double *x2)
         }
     }
 
-
-
-
 int IsEqual (double num_1, double num_2)
     {
     if (fabs(num_1 - num_2) < eps)
@@ -181,8 +175,6 @@ int IsEqual (double num_1, double num_2)
         return 0;
         }
     }
-
-
 
 void ClearInputBuffer ()
     {
