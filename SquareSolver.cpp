@@ -35,6 +35,8 @@ roots SquareSolve (double a, double b, double c, double *x1, double *x2)
             {
             double D, sqrt_D;
             D = b*b - 4*a*c;
+            sqrt_D = 0;
+
             if (D > 0)
                 {
                 sqrt_D = sqrt(D);

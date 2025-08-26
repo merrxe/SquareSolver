@@ -21,7 +21,7 @@ int main (int argc, char *argv[])
         /*ÈÍÈÖÈÀËÈÇÀÖÈß*/
         double a, b, c, x1, x2;
         a = b = c = 0;
-        x1 = x2 = 0;
+        x1 = x2 = NAN;
 
         /*ÂÂÎÄ ÊÎİÔÔÈÖÈÅÍÒÎÂ*/
         Input(&a, &b, &c, color);
