@@ -23,7 +23,11 @@ int CommandsCalled (int argc, char *argv[], colors *color)
 
     else if (!strcmp (argv[1], "--color"))
         {
-        if (argc == 1 || !strcmp (argv[2], "rm"))
+        if (argc == 2)
+            {
+            *color = NOT_COLORED;
+            }
+        else if (!strcmp (argv[2], "rm"))
             {
             *color = NOT_COLORED;
             }
@@ -60,3 +64,5 @@ int CommandsCalled (int argc, char *argv[], colors *color)
         }
     return 0;
     }
+
+//colors ColorChoice ()
