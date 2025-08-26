@@ -18,7 +18,7 @@ void ClearInputBuffer ();
 
 int main (int argc, char *argv[])
     {
-    if (!CommandsCalled (argv))
+    if (!CommandsCalled (argc, argv))
         {
         /*UNIT-реярш*/
         int failed = nFailed();
@@ -26,7 +26,6 @@ int main (int argc, char *argv[])
             {
             printf("FAILED: %d", failed);
             }
-        }
 
         /*оепелеммше*/
         double a, b, c, x1, x2;
@@ -41,7 +40,9 @@ int main (int argc, char *argv[])
         Output(nRoots, x1, x2);
 
         return 0;
+        }
     }
+
 
 void Input (double *a, double *b, double *c)
     {
