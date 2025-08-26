@@ -2,6 +2,7 @@
 #define SQUARE_SOLVER_H
 
 #include "SquareCommon.h"
+const double eps = 1e-7;
 
 roots SquareSolve (double a, double b, double c, double *x1, double *x2);
 roots LinearSolve (double b, double c, double *x1, double *x2);

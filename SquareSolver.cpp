@@ -3,40 +3,7 @@
 #include <assert.h>
 #include <stdlib.h>
 
-#include "SquareTester.h"
 #include "SquareSolver.h"
-#include "SquareCommandsRun.h"
-#include "SquareInput.h"
-#include "SquareOutput.h"
-
-const double eps = 1e-7;
-
-int main (int argc, char *argv[])
-    {
-    if (!CommandsCalled (argc, argv))
-        {
-        /*UNIT-реярш*/
-        int failed = nFailed();
-        if (failed != 0)
-            {
-            printf("FAILED: %d", failed);
-            }
-
-        /*оепелеммше*/
-        double a, b, c, x1, x2;
-        a = b = c = 0;
-        x1 = x2 = NAN;
-
-        /*ббнд дюммшу*/
-        Input(&a, &b, &c);
-
-        /*бшбнд йнпмеи*/
-        roots nRoots = SquareSolve (a, b, c, &x1, &x2);
-        Output(nRoots, x1, x2);
-
-        return 0;
-        }
-    }
 
 roots SquareSolve (double a, double b, double c, double *x1, double *x2)
     {
