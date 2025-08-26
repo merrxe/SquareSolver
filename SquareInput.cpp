@@ -9,7 +9,7 @@ void Input (double *a, double *b, double *c, colors color)
     {
     assert (a && b && c);
 
-    printf ("\033[%dm Введите коэффициенты a, b, c квадратного уравнения: ", color);
+    printf ("\033[%dmВведите коэффициенты a, b, c квадратного уравнения: ", color);
 
     while (scanf ("%lf %lf %lf", a, b, c) != 3)
         {

@@ -11,22 +11,22 @@ int main (int argc, char *argv[])
     colors color = NOT_COLORED;
     if (!CommandsCalled (argc, argv, &color))
         {
-        /*UNIT-РЕЯРШ*/
+        /*UNIT-реярш*/
         int failed = nFailed();
         if (failed != 0)
             {
             printf("FAILED: %d", failed);
             }
 
-        /*оепелеммше*/
+        /*хмхжхюкхгюжхъ*/
         double a, b, c, x1, x2;
         a = b = c = 0;
         x1 = x2 = 0;
 
-        /*ббнд дюммшу*/
+        /*ббнд йнщттхжхемрнб*/
         Input(&a, &b, &c, color);
 
-        /*бшбнд дюммшу*/
+        /*бшбнд йнпмеи*/
         roots nRoots = SquareSolve (a, b, c, &x1, &x2);
         Output(nRoots, x1, x2);
 

@@ -12,15 +12,18 @@ int CommandsCalled (int argc, char *argv[], colors *color)
         {
         return 0;
         }
+
+    /*КОМАНДА: ВЫВОДИТ ИНФОРМАЦИЮ О ПРОГРАММЕ НА ЭКРАН.*/
     else if (!strcmp (argv[1], "--help"))
         {
         printf ("\n\nДанная программа решает квадратное уравнение в действительных числах.");
         printf("\nВведите ./start.exe, чтобы запустить программу start.exe.");
-        printf("\nВведите ./start.exe --help, чтобы вывести список доступных команд.\n");
-        printf("\nВведите ./start.exe --color [rm] [black] [red] [green] [yellow] [blue] [purple] [light_blue], чтобы окрасить отображаемый текст.\n");
+        printf("\nВведите ./start.exe --help, чтобы вывести информацию о программе на экран.\n");
+        printf("\nВведите  ./start.exe --color [rm] [black] [red] [green] [yellow] [blue] [purple] [light_blue], чтобы изменить цвет текста.\n");
         return 1;
         }
 
+    /*ПРОГРАММА: МЕНЯЕТ ЦВЕТ ТЕКСТА*/
     else if (!strcmp (argv[1], "--color"))
         {
         if (argc == 2)

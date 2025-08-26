@@ -16,7 +16,7 @@ roots SquareSolve (double a, double b, double c, double *x1, double *x2)
 
     else /* if (a != 0) */
         {
-        if (IsEqual (c, 0)) /*     уравнение вида ax^2 + bx = 0    */
+        if (IsEqual (c, 0)) /*   Уравнение вида ax^2 + bx = 0    */
             {
             if (IsEqual (b, 0))
                 {
@@ -31,7 +31,7 @@ roots SquareSolve (double a, double b, double c, double *x1, double *x2)
                 }
             }
 
-        else /*    уравнение вида ax^2 + bx + c= 0     */
+        else /*    Уравнение вида ax^2 + bx + c= 0     */
             {
             double D, sqrt_D;
             D = b*b - 4*a*c;
@@ -62,7 +62,7 @@ roots LinearSolve (double b, double c, double *x1, double *x2)
     {
     assert (x1 && x2);
 
-    if (IsEqual (b, 0)) {    /*     уравнение вида c = 0   */
+    if (IsEqual (b, 0)) {    /*  Уравнение вида c = 0   */
             if (IsEqual (c, 0))
                 {
                 return INFINITE_ROOTS;
@@ -73,7 +73,7 @@ roots LinearSolve (double b, double c, double *x1, double *x2)
                 }
         }
 
-    else     /*    уравнение вида bx + c = 0     */
+    else     /*  Уравнение вида bx + c = 0     */
         {
         *x1 = *x2 = -c/b;
         return ONE_ROOT;
