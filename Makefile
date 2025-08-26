@@ -1,5 +1,6 @@
-all:
-	g++ SquareSolver.cpp Tester.cpp -Wshadow -Winit-self 		\
+CC = g++
+
+CFLAGS = -Wshadow -Winit-self 		\
 	-Wredundant-decls -Wcast-align -Wundef -Wfloat-equal 		\
 	-Winline -Wunreachable-code -Wmissing-declarations 			\
 	-Wmissing-include-dirs -Wswitch-enum -Wswitch-default 		\
@@ -11,3 +12,16 @@ all:
 	-Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing 			\
 	-Wstrict-null-sentinel -Wtype-limits -Wwrite-strings 		\
 	-Werror=vla -D_DEBUG -D_EJUDGE_CLIENT_SIDE
+
+SOURCES = SquareSolver.cpp Tester.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
+EXECUTABLE = hello
+
+all: $(SOURCES) $(EXECUTABLE)
+	@echo "Compilation complete"
+
+$(EXECUTABLE): $(OBJECTS)
+	@$(CC) $(CFLAGS) $(OBJECTS) -o $@
+
+.cpp.o:
+	@$(CC) $(CFLAGS) -c $< -o $@
