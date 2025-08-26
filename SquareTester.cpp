@@ -1,5 +1,6 @@
 #include <TXLib.h>
 #include <math.h>
+
 #include "SquareTester.h"
 #include "SquareSolver.h"
 

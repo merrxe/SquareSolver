@@ -6,15 +6,10 @@
 #include "SquareTester.h"
 #include "SquareSolver.h"
 #include "SquareCommandsRun.h"
+#include "SquareInput.h"
+#include "SquareOutput.h"
 
 const double eps = 1e-7;
-
-void Input (double *a, double *b, double *c);
-void Output (roots nRoots, double x1, double x2);
-
-roots LinearSolve (double b, double c, double *x1, double *x2);
-
-void ClearInputBuffer ();
 
 int main (int argc, char *argv[])
     {
@@ -40,53 +35,6 @@ int main (int argc, char *argv[])
         Output(nRoots, x1, x2);
 
         return 0;
-        }
-    }
-
-
-void Input (double *a, double *b, double *c)
-    {
-    assert (a && b && c);
-
-    printf ("Введите коэффициенты квадратного уравнения через пробел: ");
-
-    while (scanf ("%lf %lf %lf", a, b, c) != 3)
-        {
-        ClearInputBuffer ();
-        }
-    }
-
-void Output (roots nRoots, double x1, double x2)
-    {
-    switch (nRoots)
-        {
-        case NO_REAL_SOLUTION:  printf("\nУравнение не имеет действительных корней.");
-                                break;
-
-
-
-        case NO_ROOTS:          printf("\nУравнение не имеет решений.");
-                                break;
-
-
-
-        case ONE_ROOT:          printf("\nУравнение имеет один действительный корень: х = %.2f.", x1);
-                                break;
-
-
-
-        case TWO_ROOTS:         printf("\nУравнение имеет два действительных корня: х1 = %.2f и x2 = %.2f.", x1, x2);
-                                break;
-
-
-
-        case INFINITE_ROOTS:    printf("\nУравнение имеет бесконечно много решений.");
-                                break;
-
-
-
-        default:                printf("\nFAILED");
-                                break;
         }
     }
 
@@ -175,10 +123,4 @@ int IsEqual (double num_1, double num_2)
         {
         return 0;
         }
-    }
-
-void ClearInputBuffer ()
-    {
-    while (getchar() != '\n'){}
-    printf("\n Убедитесь, что введёные данные корректны.\n");
     }

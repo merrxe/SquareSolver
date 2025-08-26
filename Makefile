@@ -13,7 +13,7 @@ CFLAGS = -Wshadow -Winit-self 		\
 	-Wstrict-null-sentinel -Wtype-limits -Wwrite-strings 		\
 	-Werror=vla -D_DEBUG -D_EJUDGE_CLIENT_SIDE
 
-SOURCES = SquareSolver.cpp SquareTester.cpp SquareCommandsRun.cpp
+SOURCES = SquareSolver.cpp SquareTester.cpp SquareCommandsRun.cpp SquareOutput.cpp SquareInput.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 EXECUTABLE = start
 

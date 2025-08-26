@@ -1,5 +1,9 @@
-#include <string.h>
 #include <TXLib.h>
+#include <math.h>
+#include <assert.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "SquareCommandsRun.h"
 
 int CommandsCalled (int argc, char *argv[])
