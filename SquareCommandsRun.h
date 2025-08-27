@@ -3,5 +3,8 @@
 
 #include "SquareColors.h"
 int CommandsCalled (int argc, char *argv[], colors *color);
+int SquadHelp ();
+int CallPoltorashka ();
+int ColorChange (int argc, char *argv[], colors *color);
 
 #endif
