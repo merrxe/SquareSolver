@@ -1,8 +1,6 @@
 #include <TXLib.h>
 #include <math.h>
-#include <assert.h>
 #include <stdlib.h>
-#include <string.h>
 
 #include "SquareMain.h"
 

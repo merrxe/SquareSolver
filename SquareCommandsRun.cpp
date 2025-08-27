@@ -30,7 +30,24 @@ int CommandsCalled (int argc, char *argv[], colors *color)
         printf ("\nДанная программа решает квадратное уравнение в действительных числах.");
         printf ("\nВведите ./start.exe, чтобы запустить программу start.exe.");
         printf ("\nВведите ./start.exe --help, чтобы вывести информацию о программе на экран.");
-        printf ("\nВведите ./start.exe --color [black] [red] [green] [yellow] [blue] [purple] [light_blue], чтобы изменить цвет текста.\n");
+        printf ("\nВведите ./start.exe --color [black] [red] [green] [yellow] [blue] [purple] [light_blue], чтобы изменить цвет текста.");
+        printf ("\nВведите ./start.exe --call_poltorashka, чтобы вызвать Полторашку.\n");
+        return 1;
+        }
+    /*КОМАНДА: ВЫЗОВ ПОЛТОРАШКИ*/
+    else if (!strcmp (argv[1], "--call_poltorashka"))
+        {
+        printf(" ,_     _\n");
+        printf(" |\\_,-~/\n");
+        printf(" / _  _ |     ,--.\n");
+        printf("(  @  @ )   / ,-'\n");
+        printf("\\  _T_/-._( (\n");
+        printf("/         `. \\\n");
+        printf("|         _  \\ |\n");
+        printf("\\ \\ ,  /      |\n");
+        printf(" || |-_\\__   /\n");
+        printf("((_/`(____,-'\n");
+        printf("MEOW!");
         return 1;
         }
 
