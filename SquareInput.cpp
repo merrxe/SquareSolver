@@ -21,6 +21,7 @@ void Input (double *a, double *b, double *c, colors color)
     while (scanf ("%lf %lf %lf", a, b, c) != 3)
         {
         ClearInputBuffer ();
+        printf("\n Убедитесь, что введённые данные корректны.\n");
         }
     }
 
@@ -30,5 +31,4 @@ void Input (double *a, double *b, double *c, colors color)
 void ClearInputBuffer ()
     {
     while (getchar() != '\n'){}
-    printf("\n Убедитесь, что введённые данные корректны.\n");
     }

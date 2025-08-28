@@ -89,15 +89,14 @@ roots LinearSolve (double b, double c, double *x1, double *x2)
     {
     assert (x1 && x2);
 
-    if (IsEqual (b, 0)) {    /*  Уравнение вида c = 0   */
+    if (IsEqual (b, 0)) /*  Уравнение вида c = 0   */
+        {
             if (IsEqual (c, 0))
                 {
                 return INFINITE_ROOTS;
                 }
-            else
-                {
-                return NO_ROOTS;
-                }
+
+            return NO_ROOTS;
         }
 
     else     /*  Уравнение вида bx + c = 0     */
@@ -117,12 +116,5 @@ roots LinearSolve (double b, double c, double *x1, double *x2)
 //-----------------------------------------------------
 int IsEqual (double num_1, double num_2)
     {
-    if (fabs(num_1 - num_2) < eps)
-        {
-        return 1;
-        }
-    else
-        {
-        return 0;
-        }
+    return fabs(num_1 - num_2) < eps;
     }

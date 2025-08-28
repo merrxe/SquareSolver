@@ -42,5 +42,5 @@ void Output (roots nRoots, double x1, double x2)
         default:                printf("\nFAILED");
                                 break;
         }
-    printf("\n!!!COMMIT GITHUB!!!");
+    printf("\n!!!COMMIT GITHUB!!!\n");
     }

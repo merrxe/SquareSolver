@@ -10,12 +10,15 @@ int main (int argc, char *argv[])
     colors color = NOT_COLORED;
     if (!CommandsCalled (argc, argv, &color))
         {
+
+        #ifdef _DEBUG
         /*UNIT-“≈—“€*/
         int failed = nFailed();
         if (failed != 0)
             {
             printf("FAILED: %d", failed);
             }
+        #endif
 
         /*»Õ»÷»¿À»«¿÷»ﬂ œ≈–≈Ã≈ÕÕ€’*/
         double a, b, c, x1, x2;
