@@ -25,6 +25,7 @@ int nFailed ()
         /*реярш дкъ ндмнцн йнпмъ*/
         {.coeff = {.a = 1, .b = -10, .c = 25}, .nRoots_ref = ONE_ROOT, .roots_ref = {.x1_ref = 5,  .x2_ref = 5}},
         {.coeff = {.a = 0, .b = 5, .c = -10},  .nRoots_ref = ONE_ROOT, .roots_ref = {.x1_ref = 2,  .x2_ref = 2}},
+        {.coeff = {.a = 1, .b = 0, .c = 0},    .nRoots_ref = ONE_ROOT, .roots_ref = {.x1_ref = 0,  .x2_ref = 0}},
 
         /*реярш дкъ нрясрярбхъ деиярбхрекэмшу йнпмеи*/
         {.coeff = {.a = 100, .b = 2, .c = 100}, .nRoots_ref = NO_REAL_SOLUTION, .roots_ref = {.x1_ref = 0,  .x2_ref = 0}},
