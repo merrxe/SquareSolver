@@ -19,6 +19,7 @@
 //-------------------------------------------------------------------------------------------
 int CommandsCalled (int argc, char *argv[], colors *color)
     {
+    assert (color && argv);
     if (argc < 2)
         {
         return 0;
@@ -41,7 +42,13 @@ int CommandsCalled (int argc, char *argv[], colors *color)
         {
         return ColorChange (argc, argv, color);
         }
-    return 0;
+
+    /*ÏÎËÜÇÎÂÀÒÅËÜ ÂÂ¨Ë ÊÎÌÀÍÄÓ ÍÅÊÎÐÐÅÊÒÍÎ*/
+    else
+        {
+        printf("Êîìàíäà íå íàéäåíà.\n");
+        return 1;
+        }
     }
 
 //-------------------------------------------------------------------------------------------
@@ -76,7 +83,7 @@ int CallPoltorashka ()
     printf("\\ \\ ,  /      |\n");
     printf(" || |-_\\__   /\n");
     printf("((_/`(____,-'\n");
-    printf("MEOW! RTRTRTRTRTRTRTRTRTRT");
+    printf("MEOW! RTRTRTRTRTRTRTRTRTRT\n");
     return 1;
     }
 
@@ -91,6 +98,7 @@ int CallPoltorashka ()
 //-------------------------------------------------------------------------------------------
 int ColorChange (int argc, char *argv[], colors *color)
     {
+    assert (color && argv);
     if (argc == 2)
         {
         *color = NOT_COLORED;

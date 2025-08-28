@@ -33,7 +33,7 @@ roots SquareSolve (double a, double b, double c, double *x1, double *x2)
             {
             if (IsEqual (b, 0))
                 {
-                x1 = x2 = 0;
+                *x1 = *x2 = 0;
                 return ONE_ROOT;
                 }
             else /* if (b != 0) */
