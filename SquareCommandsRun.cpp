@@ -3,6 +3,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <string.h>
+#include <regex.h>
 
 #include "SquareCommandsRun.h"
 
@@ -20,35 +21,42 @@
 int CommandsCalled (int argc, char *argv[], colors *color)
     {
     assert (color && argv);
-    if (argc < 2)
+    bool CommandIncorrect = false;
+    int NumToReturn = 0;
+
+    for (int i = 1; i < argc; i++)
         {
-        return 0;
+        /*ÊÎÌÀÍÄÀ: ÂÛÂÎÄÈÒ ÈÍÔÎÐÌÀÖÈÞ Î ÏÐÎÃÐÀÌÌÅ ÍÀ ÝÊÐÀÍ.*/
+        if (!strcmp (argv[i], "--help"))
+            {
+            NumToReturn = SquadHelp (argv[0], *color);
+            }
+
+        /*ÊÎÌÀÍÄÀ: ÌÅÍßÅÒ ÖÂÅÒ ÒÅÊÑÒÀ*/
+        else if (!strcmp (argv[i], "--color"))
+            {
+            NumToReturn = ColorChange (argv, color, i + 1);
+            }
+
+        /*ÊÎÌÀÍÄÀ: ÂÛÇÎÂ ÏÎËÒÎÐÀØÊÈ*/
+        else if (!strcmp (argv[i], "--call_poltorashka"))
+            {
+            NumToReturn = CallPoltorashka (*color);
+            }
+
+        /*ÏÎËÜÇÎÂÀÒÅËÜ ÂÂ¨Ë ÊÎÌÀÍÄÓ ÍÅÊÎÐÐÅÊÒÍÎ*/
+        else if (strcmp (argv[i-1], "--color"))
+            {
+            CommandIncorrect = true;
+            }
         }
 
-    /*ÊÎÌÀÍÄÀ: ÂÛÂÎÄÈÒ ÈÍÔÎÐÌÀÖÈÞ Î ÏÐÎÃÐÀÌÌÅ ÍÀ ÝÊÐÀÍ.*/
-    else if (!strcmp (argv[1], "--help"))
-        {
-        return SquadHelp ();
-        }
-
-    /*ÊÎÌÀÍÄÀ: ÂÛÇÎÂ ÏÎËÒÎÐÀØÊÈ*/
-    else if (!strcmp (argv[1], "--call_poltorashka"))
-        {
-        return  CallPoltorashka ();
-        }
-
-    /*ÊÎÌÀÍÄÀ: ÌÅÍßÅÒ ÖÂÅÒ ÒÅÊÑÒÀ*/
-    else if (!strcmp (argv[1], "--color"))
-        {
-        return ColorChange (argc, argv, color);
-        }
-
-    /*ÏÎËÜÇÎÂÀÒÅËÜ ÂÂ¨Ë ÊÎÌÀÍÄÓ ÍÅÊÎÐÐÅÊÒÍÎ*/
-    else
+    if (CommandIncorrect)
         {
         printf("Êîìàíäà íå íàéäåíà.\n");
-        return 1;
+        NumToReturn = 1;
         }
+    return NumToReturn;
     }
 
 //-------------------------------------------------------------------------------------------
@@ -56,13 +64,20 @@ int CommandsCalled (int argc, char *argv[], colors *color)
 //!
 //! @return True or false (1 or 0)
 //-------------------------------------------------------------------------------------------
-int SquadHelp ()
+int SquadHelp (char path[], colors color)
     {
-    printf ("\nÄàííàÿ ïðîãðàììà ðåøàåò êâàäðàòíîå óðàâíåíèå â äåéñòâèòåëüíûõ ÷èñëàõ.");
-    printf ("\nÂâåäèòå ./start.exe, ÷òîáû çàïóñòèòü ïðîãðàììó start.exe.");
-    printf ("\nÂâåäèòå ./start.exe --help, ÷òîáû âûâåñòè èíôîðìàöèþ î ïðîãðàììå íà ýêðàí.");
-    printf ("\nÂâåäèòå ./start.exe --color [black] [red] [green] [yellow] [blue] [purple] [light_blue], ÷òîáû èçìåíèòü öâåò òåêñòà.");
-    printf ("\nÂâåäèòå ./start.exe --call_poltorashka, ÷òîáû âûçâàòü Ïîëòîðàøêó.\n");
+    char *str = strtok (path, "\\");
+    char *name_exe;
+    while (str != NULL)
+    {
+        name_exe = str;
+        str = strtok (NULL, "\\");
+    }
+    printf ("\n\033[%dmÄàííàÿ ïðîãðàììà ðåøàåò êâàäðàòíîå óðàâíåíèå â äåéñòâèòåëüíûõ ÷èñëàõ.", color);
+    printf ("\nÂâåäèòå ./%s, ÷òîáû çàïóñòèòü ïðîãðàììó ./%s.", name_exe, name_exe);
+    printf ("\nÂâåäèòå ./%s --help, ÷òîáû âûâåñòè èíôîðìàöèþ î ïðîãðàììå íà ýêðàí.", name_exe);
+    printf ("\nÂâåäèòå ./%s --color [black] [red] [green] [yellow] [blue] [purple] [light_blue], ÷òîáû èçìåíèòü öâåò òåêñòà.", name_exe);
+    printf ("\nÂâåäèòå ./%s --call_poltorashka, ÷òîáû âûçâàòü Ïîëòîðàøêó.\n", name_exe);
     return 1;
     }
 
@@ -71,10 +86,10 @@ int SquadHelp ()
 //!
 //! @return True or false (1 or 0)
 //-------------------------------------------------------------------------------------------
-int CallPoltorashka ()
+int CallPoltorashka (colors color)
     {
-    printf(" ,_     _\n");
-    printf(" |\\_,-~/\n");
+    printf("\033[%dm  ,_     _\n", color);
+    printf("  |\\_,-~/\n");
     printf(" / _  _ |     ,--.\n");
     printf("(  @  @ )   / ,-'\n");
     printf("\\  _T_/-._( (\n");
@@ -96,38 +111,35 @@ int CallPoltorashka ()
 //!
 //! @return True or false (1 or 0)
 //-------------------------------------------------------------------------------------------
-int ColorChange (int argc, char *argv[], colors *color)
+int ColorChange (char *argv[], colors *color, int i)
     {
     assert (color && argv);
-    if (argc == 2)
-        {
-        *color = NOT_COLORED;
-        }
-    else if (!strcmp (argv[2], "black"))
+
+    if (!strcmp (argv[i], "black"))
         {
         *color = BLACK;
         }
-    else if (!strcmp (argv[2], "red"))
+    else if (!strcmp (argv[i], "red"))
         {
         *color = RED;
         }
-    else if (!strcmp (argv[2], "green"))
+    else if (!strcmp (argv[i], "green"))
         {
         *color = GREEN;
         }
-    else if (!strcmp (argv[2], "yellow"))
+    else if (!strcmp (argv[i], "yellow"))
         {
         *color = YELLOW;
         }
-    else if (!strcmp (argv[2], "blue"))
+    else if (!strcmp (argv[i], "blue"))
         {
         *color = BLUE;
         }
-    else if (!strcmp (argv[2], "purple"))
+    else if (!strcmp (argv[i], "purple"))
         {
         *color = PURPLE;
         }
-    else if (!strcmp (argv[2], "light_blue"))
+    else if (!strcmp (argv[i], "light_blue"))
         {
         *color = LIGHT_BLUE;
         }

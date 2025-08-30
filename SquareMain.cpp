@@ -7,6 +7,17 @@
 //-------------------------------------------------------
 int main (int argc, char *argv[])
     {
+    /**txCreateWindow (GetSystemMetrics (SM_CXSCREEN) / 2, GetSystemMetrics (SM_CYSCREEN) / 2);
+
+    txSetColor (TX_LIGHTGREEN);
+    txSetFillColor (TX_LIGHTGREEN);
+    for (double x = -100; x <= +100; x += 0.001)
+        {
+        double y = sin (x);
+
+        txCircle (x*10 + txGetExtentX()/2, -y*100 + txGetExtentY()/2, 1);
+        }**/
+
     colors color = NOT_COLORED;
     if (!CommandsCalled (argc, argv, &color))
         {
