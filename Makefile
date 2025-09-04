@@ -11,17 +11,24 @@ CFLAGS = -Wshadow -Winit-self 									\
 	-Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith 	\
 	-Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing 			\
 	-Wstrict-null-sentinel -Wtype-limits -Wwrite-strings 		\
-	-Werror=vla -D_DEBUG -D_EJUDGE_CLIENT_SIDE
+	-Werror=vla -D_DEBUG -D_EJUDGE_CLIENT_SIDE -IInclude
 
-SOURCES = SquareMain.cpp SquareSolver.cpp SquareTester.cpp SquareCommandsRun.cpp SquareOutput.cpp SquareInput.cpp
+CPP = SquareMain.cpp SquareSolver.cpp SquareTester.cpp SquareCommandsRun.cpp SquareOutput.cpp SquareInput.cpp
+SOURCES = $(addprefix Sources/, $(CPP))
 OBJECTS = $(SOURCES:.cpp=.o)
 EXECUTABLE = start
 
-all: $(SOURCES) $(EXECUTABLE)
+all: prepare $(SOURCES) $(EXECUTABLE)
 	@echo "Compilation complete"
 
+
 $(EXECUTABLE): $(OBJECTS)
-	@$(CC) $(CFLAGS) $(OBJECTS) -o $@
+	@mv $(OBJECTS) Build/
+	@$(CC) $(CFLAGS) $(addprefix Build/, $(CPP:.cpp=.o)) -o $@
+	@mv *.exe Build/
+
+prepare:
+	@mkdir -p Build
 
 .cpp.o:
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o Build/$@
